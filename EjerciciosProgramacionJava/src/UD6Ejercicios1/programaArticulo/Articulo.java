@@ -28,7 +28,7 @@ public class Articulo {
             this.precio = precio;
         }
 
-        if (cuantosQuedan < 0) {
+        if (cuantosQuedan <= 0) {
             System.err.println("ERROR, no se permiten valores negativos");
         } else {
             this.cuantosQuedan = cuantosQuedan;
@@ -56,11 +56,21 @@ public class Articulo {
     }
 
     public void setPrecio(double precio) {
-        this.precio = precio;
+        
+        if (precio < 0) {
+            System.err.println("ERROR, no se permiten valores negativos");
+        } else {
+            this.precio = precio;
+        }
     }
 
     public void setCuantosQuedan(int cuantosQuedan) {
-        this.cuantosQuedan = cuantosQuedan;
+        
+        if (cuantosQuedan <= 0) {
+            System.err.println("ERROR, no se permiten valores negativos");
+        } else {
+            this.cuantosQuedan = cuantosQuedan;
+        }
     }
 
 }
