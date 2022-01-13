@@ -16,22 +16,15 @@ public class Main {
     
     public static void main(String[] args) {
         
-        Rectangulo r1 = new Rectangulo(0,0,5,5);
-        Rectangulo r2 = new Rectangulo(7,9,2,3);
+        Rectangulo r1 = new Rectangulo(2,3,6,6);
+        //Rectangulo r2 = new Rectangulo(7,9,2,3);
+        //r1.setX1Y1X2Y2(15,15,20,20);
+        //r1.imprimir();
+        System.out.println(r1.getPerimetro());
+        //r2.imprimir();
+        System.out.println(r1.getArea());
         
-        int pr1 = Math.abs((r1.getX2() - r1.getX1()) * 2 + (r1.getY2() - r1.getY1()) * 2);
-        int ar1 = Math.abs((r1.getX2() - r1.getX1()) * (r1.getY2() - r1.getY1()));
-        
-        int pr2 = Math.abs((r2.getX2() - r2.getX1()) * 2 + (r2.getY2() - r2.getY1()) * 2);
-        int ar2 = Math.abs((r2.getX2() - r2.getX1()) * (r2.getY2() - r2.getY1()));
-        
-        System.out.println("Coordenadas rectángulo1: " + "(" + r1.getX1() + "," + r1.getY1() + ")" + "(" + r1.getX2() + "," + r1.getY2() + ")");
-        System.out.println("Perímetro rectángulo1 : " + pr1);
-        System.out.println("Área rectángulo1: " + ar1);
-    
-        System.out.println("Coordenadas rectángulo2: " + "(" + r2.getX1() + "," + r2.getY1() + ")" + "(" + r2.getX2() + "," + r2.getY2() + ")");
-        System.out.println("Perímetro rectángulo2 : " + pr2);
-        System.out.println("Área rectángulo2: " + ar2);
+
     }
 
 }

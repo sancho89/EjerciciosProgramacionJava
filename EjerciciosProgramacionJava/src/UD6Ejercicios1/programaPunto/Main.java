@@ -3,7 +3,6 @@
  * Licencia Creative Commons BY-NC-SA 4.0
  * https://creativecommons.org/licenses/by-nc-sa/4.0/
  */
-
 package UD6Ejercicios1.programaPunto;
 
 /**
@@ -13,16 +12,26 @@ package UD6Ejercicios1.programaPunto;
  * @date 10 ene. 2022 20:01:57
  */
 public class Main {
-    
+
     public static void main(String[] args) {
+
+        Punto p1 = new Punto(5, 0);
+        Punto p2 = new Punto(10, 10);
+        Punto p3 = new Punto(-3, 7);
+
+        p1.imprime();
+        p2.imprime();
+        p3.imprime();
         
-        Punto p1 = new Punto(5,0);
-        Punto p2 = new Punto(10,10);
-        Punto p3 = new Punto(-3,7);     
+        p1.setXY(3,3);
+        
+        p1.imprime();
+        
+        p1.desplaza(0, 0);
+        
+        p1.imprime();
+        
+        System.out.println(p1.distancia(p2));
 
-        System.out.println("Punto 1: " + p1.getX() + "," + p1.getY());
-        System.out.println("Punto 2: " + p2.getX() + "," + p2.getY());
-        System.out.println("Punto 3: " + p3.getX() + "," + p3.getY());
     }
-
 }

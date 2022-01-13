@@ -59,4 +59,29 @@ public class Persona {
         this.edad = edad;
     }
 
+    public void imprime() {
+        System.out.println("DNI: " + getDni() + "   Nombre: " + getNombre() + "   Apellidos: " + getApellidos() + "   Edad: " + getEdad());
+
+    }
+
+    public boolean esMayorEdad() {
+        if (getEdad() >= 18) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean esJubilado() {
+        if (getEdad() >= 65) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public int diferenciaEdad(Persona p) {
+        return Math.abs(p.edad - this.edad);
+    }
+
 }

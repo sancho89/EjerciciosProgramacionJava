@@ -31,24 +31,20 @@ public class Main {
         String nombreP2 = in.nextLine();
         String apellidosP2 = in.nextLine();
         int edadP2 = in.nextInt();
-        
+
         Persona p1 = new Persona(dniP1, nombreP1, apellidosP1, edadP1);
         Persona p2 = new Persona(dniP2, nombreP2, apellidosP2, edadP2);
-        
 
-        System.out.println("PERSONA 1: " + p1.getNombre() + " " + p1.getApellidos() + " con DNI: " + p1.getDni());
-        if (p1.getEdad() >= 18) {
-            System.out.println("Es mayor de edad.");
-        } else {
-            System.out.println("no es mayor de edad.");
-        }
+        p1.imprime();
+        System.out.println(p1.esMayorEdad());
+        System.out.println(p1.esJubilado());
+        System.out.println(p1.diferenciaEdad(p2));
+
+        p2.imprime();
+        System.out.println(p2.esMayorEdad());
+        System.out.println(p2.esJubilado());
         
-        System.out.println("PERSONA 2: " + p2.getNombre() + " " + p2.getApellidos() + " con " + p2.getDni());
-        if (p2.getEdad() >= 18) {
-            System.out.println("Es mayor de edad.");
-        } else {
-            System.out.println("no es mayor de edad.");
-        }
+        
     }
 
 }
