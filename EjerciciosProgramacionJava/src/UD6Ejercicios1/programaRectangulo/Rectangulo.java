@@ -118,12 +118,12 @@ public class Rectangulo {
         setX2(x2);
         setY2(y2);
     }
-    
+
     public int getPerimetro() {
-        return Math.abs(x2- x1) * 2 + Math.abs(y2-y1) * 2;
+        return Math.abs(x2 - x1) * 2 + Math.abs(y2 - y1) * 2;
     }
-    
+
     public int getArea() {
-        return Math.abs(x2-x1) * Math.abs(y2-y1);
+        return Math.abs(x2 - x1) * Math.abs(y2 - y1);
     }
 }
