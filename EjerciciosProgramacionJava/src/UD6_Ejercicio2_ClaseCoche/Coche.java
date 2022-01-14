@@ -23,18 +23,18 @@ public class Coche {
 
     private String modelo;
     private String color;
-    private boolean pintura;
+    private boolean esPinturaMetalizada;
     private String matricula;
-    private int añoFabricacion;
+    private int anyoFabricacion;
     private tipoCoche tipoCoche;
     private modalidad modalidad;
 
-    public Coche(String modelo, String color, boolean pintura, String matricula, int añoFabricacion, tipoCoche tipoCoche, modalidad modalidad) {
+    public Coche(String modelo, String color, boolean esPinturaMetalizada, String matricula, int anyoFabricacion, tipoCoche tipoCoche, modalidad modalidad) {
         this.modelo = modelo;
         this.color = color;
-        this.pintura = pintura;
+        this.esPinturaMetalizada = esPinturaMetalizada;
         this.matricula = matricula;
-        this.añoFabricacion = añoFabricacion;
+        this.anyoFabricacion = anyoFabricacion;
         this.tipoCoche = tipoCoche;
         this.modalidad = modalidad;
     }
@@ -48,7 +48,7 @@ public class Coche {
     }
 
     public boolean getPintura() {
-        return pintura;
+        return esPinturaMetalizada;
     }
 
     public String getMatricula() {
@@ -56,7 +56,7 @@ public class Coche {
     }
 
     public int getAñoFabricacion() {
-        return añoFabricacion;
+        return anyoFabricacion;
     }
 
     public tipoCoche getTipoCoche() {
@@ -76,7 +76,7 @@ public class Coche {
     }
 
     public void setPintura(boolean pintura) {
-        this.pintura = pintura;
+        this.esPinturaMetalizada = esPinturaMetalizada;
     }
 
     public void setMatricula(String matricula) {
@@ -84,7 +84,7 @@ public class Coche {
     }
 
     public void setAñoFabricacion(int AñoFabricacion) {
-        this.añoFabricacion = añoFabricacion;
+        this.anyoFabricacion = anyoFabricacion;
     }
 
     public void setTipoCoche(tipoCoche tipoCoche) {
@@ -98,9 +98,9 @@ public class Coche {
     public void imprime() {
         System.out.println("MODELO: " + modelo + "\n"
                 + "COLOR: " + color + "\n"
-                + "PINTURA: " + pintura + "\n"
+                + "PINTURA METALIZADA: " + esPinturaMetalizada + "\n"
                 + "MATRÍCULA: " + matricula + "\n"
-                + "AÑO FABRICACIÓN: " + añoFabricacion + "\n"
+                + "AÑO FABRICACIÓN: " + anyoFabricacion + "\n"
                 + "TIPO COCHE: " + tipoCoche + "\n"
                 + "MODALIDAD: " + modalidad + "\n"
                 + "");
