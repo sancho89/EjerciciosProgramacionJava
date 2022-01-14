@@ -130,7 +130,7 @@ public class CuentasBancarias {
 
                     // Usamos el método "indexOf" y lo pasamos a mayúsculas para buscar la cuenta por nombre e introducimos if por si no encuentra nada
                     for (int i = 0; i < nCuentas; i++) {
-                        if (nombres[i].toUpperCase().indexOf(busqueda.toUpperCase()) >= 0) {
+                        if (nombres[i].compareToIgnoreCase(busqueda) == 0) {
                             System.out.println(i + ". " + nombres[i] + "  Saldo: " + saldos[i] + " €");
                             contBusqueda++;
                         }
