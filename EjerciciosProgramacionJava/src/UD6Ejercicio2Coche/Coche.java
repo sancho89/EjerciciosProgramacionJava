@@ -3,7 +3,7 @@
  * Licencia Creative Commons BY-NC-SA 4.0
  * https://creativecommons.org/licenses/by-nc-sa/4.0/
  */
-package UD6_Ejercicio2_ClaseCoche;
+package UD6Ejercicio2Coche;
 
 /**
  *

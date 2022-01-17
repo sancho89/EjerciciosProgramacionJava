@@ -4,7 +4,7 @@
  * https://creativecommons.org/licenses/by-nc-sa/4.0/
  */
 
-package UD6_Ejercicio2_ClaseCoche;
+package UD6Ejercicio2Coche;
 
 /**
  *

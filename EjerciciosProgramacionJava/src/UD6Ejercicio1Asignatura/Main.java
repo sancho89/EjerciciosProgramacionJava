@@ -4,7 +4,7 @@
  * https://creativecommons.org/licenses/by-nc-sa/4.0/
  */
 
-package UD6_Ejercicio1_ClaseAsignatura;
+package UD6Ejercicio1Asignatura;
 
 /**
  *
