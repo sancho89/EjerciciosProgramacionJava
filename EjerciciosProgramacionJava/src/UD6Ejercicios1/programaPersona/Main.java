@@ -19,7 +19,7 @@ public class Main {
 
         Scanner in = new Scanner(System.in);
 
-        System.out.println("Dime los datos de la persona1:");
+        /*System.out.println("Dime los datos de la persona1:");
         String dniP1 = in.nextLine();
         String nombreP1 = in.nextLine();
         String apellidosP1 = in.nextLine();
@@ -30,20 +30,21 @@ public class Main {
         String dniP2 = in.nextLine();
         String nombreP2 = in.nextLine();
         String apellidosP2 = in.nextLine();
-        int edadP2 = in.nextInt();
+        int edadP2 = in.nextInt();*/
 
-        Persona p1 = new Persona(dniP1, nombreP1, apellidosP1, edadP1);
-        Persona p2 = new Persona(dniP2, nombreP2, apellidosP2, edadP2);
-
+        Persona p1 = new Persona("33564158m", "Carlos", "Sancho", 32);
+        //Persona p2 = new Persona(dniP2, nombreP2, apellidosP2, edadP2);
+        
         p1.imprime();
         System.out.println(p1.esMayorEdad());
         System.out.println(p1.esJubilado());
-        System.out.println(p1.diferenciaEdad(p2));
+        /*System.out.println(p1.diferenciaEdad(p2));
 
         p2.imprime();
         System.out.println(p2.esMayorEdad());
-        System.out.println(p2.esJubilado());
+        System.out.println(p2.esJubilado());*/
         
+        System.out.println(Persona.validarDNI("33564158d"));
         
     }
 

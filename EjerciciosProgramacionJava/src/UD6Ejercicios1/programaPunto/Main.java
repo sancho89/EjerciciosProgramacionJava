@@ -32,6 +32,10 @@ public class Main {
         p1.imprime();
         
         System.out.println(p1.distancia(p2));
-
+        
+        Punto p4 = Punto.creaPuntoAleatorio();
+        System.out.println(Punto.creaPuntoAleatorio());
+        p4.imprime();
+        
     }
 }

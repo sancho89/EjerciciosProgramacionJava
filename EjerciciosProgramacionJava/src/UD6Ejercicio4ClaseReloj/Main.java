@@ -29,6 +29,7 @@ public class Main {
         while (horaOk = true) {
             tiempo1.tick();
             tiempo1.imprimeHora();
+            //tiempo1.imprimeHora12();
 
         }
     }

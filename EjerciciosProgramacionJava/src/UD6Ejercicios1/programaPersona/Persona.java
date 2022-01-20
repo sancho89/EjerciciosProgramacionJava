@@ -13,10 +13,11 @@ package UD6Ejercicios1.programaPersona;
  */
 public class Persona {
 
-    private String dni;
+    private final String dni;
     private String nombre;
     private String apellidos;
     private int edad;
+    private static final int mayoriaEdad = 18;
 
     public Persona(String dni, String nombre, String apellidos, int edad) {
 
@@ -42,8 +43,8 @@ public class Persona {
         return edad;
     }
 
-    public void setDni(String dni) {
-        this.dni = dni;
+    public int getMayoriaEdad() {
+        return mayoriaEdad;
     }
 
     public void setNombre(String nombre) {
@@ -65,7 +66,7 @@ public class Persona {
     }
 
     public boolean esMayorEdad() {
-        if (getEdad() >= 18) {
+        if (getEdad() >= mayoriaEdad) {
             return true;
         } else {
             return false;
@@ -79,9 +80,31 @@ public class Persona {
             return false;
         }
     }
-    
+
     public int diferenciaEdad(Persona p) {
         return Math.abs(p.edad - this.edad);
     }
 
+    public static boolean validarDNI(String dni) {
+
+        int cont = 0;
+
+        if (dni.length() == 9 && Character.isLetter(dni.charAt(dni.length() - 1))) {
+
+            for (int i = 0; i < dni.length() - 1; i++) {
+
+                if (!Character.isDigit(dni.charAt(i))) {
+                    cont++;
+                }
+            }
+        } else {
+            cont++;
+
+        }
+        if (cont == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

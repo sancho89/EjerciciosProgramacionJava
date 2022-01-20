@@ -15,14 +15,17 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Rectangulo r1 = new Rectangulo(2, 3, 6, 6);
-        //Rectangulo r2 = new Rectangulo(7,9,2,3);
-        //r1.setX1Y1X2Y2(15,15,20,20);
-        //r1.imprimir();
+        Rectangulo r1 = new Rectangulo(10, 15, 20, 30);
+        
+        r1.imprimir();
+        
         System.out.println(r1.getPerimetro());
-        //r2.imprimir();
         System.out.println(r1.getArea());
-
+        
+        
+       Rectangulo r2 = Rectangulo.rectanguloAleatorio();
+        
+       r2.imprimir();
     }
 
 }

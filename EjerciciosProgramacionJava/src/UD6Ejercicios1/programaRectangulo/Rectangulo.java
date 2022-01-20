@@ -17,19 +17,12 @@ public class Rectangulo {
     private int y1;
     private int x2;
     private int y2;
+    private static final int min = 0;
+    private static final int max = 100;
 
     public Rectangulo(int x1, int y1, int x2, int y2) {
 
-        if (x2 > x1 && y2 > y1) {
-
-            this.x1 = x1;
-            this.y1 = y1;
-            this.x2 = x2;
-            this.y2 = y2;
-
-        } else {
-            System.err.println("ERROR. el valor de x2 y2 tiene que ser superior a x1 y1.");
-        }
+        setX1Y1X2Y2(x1, y1, x2, y2);
     }
 
     public int getX1() {
@@ -50,21 +43,31 @@ public class Rectangulo {
 
     public void setX1(int x1) {
 
-        if (x2 > x1 && y2 > y1) {
-
+        if (x2 > x1) {
             this.x1 = x1;
+
+            if (x1 > min && x1 < max) {
+                this.x1 = x1;
+            } else {
+                System.out.println("ERROR. Número fuera de rango.");
+            }
 
         } else {
             System.err.println("ERROR. el valor de x2 y2 tiene que ser superior a x1 y1.");
         }
+
     }
 
     public void setY1(int y1) {
 
-        if (x2 > x1 && y2 > y1) {
-
+        if (y2 > y1) {
             this.y1 = y1;
 
+            if (y1 > min && y1 < max) {
+                this.y1 = y1;
+            } else {
+                System.err.println("ERROR. Número fuera de rango");
+            }
         } else {
             System.err.println("ERROR. el valor de x2 y2 tiene que ser superior a x1 y1.");
         }
@@ -72,26 +75,35 @@ public class Rectangulo {
 
     public void setX2(int x2) {
 
-        if (x2 > x1 && y2 > y1) {
-
+        if (x2 > x1) {
             this.x2 = x2;
+
+            if (x2 > min && x2 < max) {
+                this.x2 = x2;
+            } else {
+                System.err.println("ERROR. Número fuera de rango.");
+            }
 
         } else {
             System.err.println("ERROR. el valor de x2 y2 tiene que ser superior a x1 y1.");
         }
+
     }
 
     public void setY2(int y2) {
 
-        if (x2 > x1 && y2 > y1) {
-
+        if (y2 > y1) {
             this.y2 = y2;
 
+            if (y2 > min && y2 < max) {
+                this.y2 = y2;
+            } else {
+                System.err.println("ERROR. Número fuera de rango");
+            }
         } else {
             System.err.println("ERROR. el valor de x2 y2 tiene que ser superior a x1 y1.");
         }
     }
-
     public void imprimir() {
         System.out.println("Coordenadas rectángulo: " + "(" + getX1() + "," + getY1() + ")" + "(" + getX2() + "," + getY2() + ")");
     }
@@ -117,6 +129,8 @@ public class Rectangulo {
         setY1(y1);
         setX2(x2);
         setY2(y2);
+        
+        
     }
 
     public int getPerimetro() {
@@ -125,5 +139,17 @@ public class Rectangulo {
 
     public int getArea() {
         return Math.abs(x2 - x1) * Math.abs(y2 - y1);
+    }
+    
+    public static Rectangulo rectanguloAleatorio() {
+        
+        int x1 = (int)(Math.random() * (max - (-min) + 1) + (-min));
+        int y1 = (int)(Math.random() * (max - (-min) + 1) + (-min));
+        int x2 = (int)(Math.random() * (max - (-min) + 1) + (-min));
+        int y2 = (int)(Math.random() * (max - (-min) + 1) + (-min));
+        
+        Rectangulo r = new Rectangulo (x1, y1, x2, y2) ;
+        
+        return r;
     }
 }

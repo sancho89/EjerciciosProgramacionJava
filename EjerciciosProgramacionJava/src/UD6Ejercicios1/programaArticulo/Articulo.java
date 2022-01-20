@@ -15,24 +15,15 @@ public class Articulo {
 
     private String nombre;
     private double precio;
-    private final int IVA = 21;
+    private final int IVA;
     private int cuantosQuedan;
 
-    public Articulo(String nombre, double precio, int cuantosQuedan) {
-
-        this.nombre = nombre;
-
-        if (precio < 0) {
-            System.err.println("ERROR, no se permiten valores negativos");
-        } else {
-            this.precio = precio;
-        }
-
-        if (cuantosQuedan <= 0) {
-            System.err.println("ERROR, no se permiten valores negativos");
-        } else {
-            this.cuantosQuedan = cuantosQuedan;
-        }
+    public Articulo(String nombre, double precio, int cuantosQuedan, int IVA) {
+        
+        setNombre(nombre);
+        setPrecio(precio);
+        setCuantosQuedan(cuantosQuedan);
+        this.IVA = IVA;
     }
 
     public String getNombre() {

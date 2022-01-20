@@ -3,7 +3,6 @@
  * Licencia Creative Commons BY-NC-SA 4.0
  * https://creativecommons.org/licenses/by-nc-sa/4.0/
  */
-
 package UD6Ejercicio4ClaseReloj;
 
 /**
@@ -14,21 +13,13 @@ package UD6Ejercicio4ClaseReloj;
  */
 public class Reloj {
 
-private int hora;
+    private int hora;
     private int minuto;
     private int segundo;
 
     public Reloj(int hora, int minuto, int segundo) {
 
-        if (hora <= 24 && minuto <= 59 && segundo <= 59) {
-
-            this.hora = hora;
-            this.minuto = minuto;
-            this.segundo = segundo;
-
-        } else {
-            System.err.println("ERROR. Valores introducidos fuera de rango.");
-        }
+        setReloj(hora, minuto, segundo);
 
     }
 
@@ -86,7 +77,7 @@ private int hora;
     }
 
     public void setReloj(int hora, int minuto, int segundo) {
-        if (hora <= 24 && minuto <= 59 && segundo <= 59) {
+        if (hora < 24 && minuto <= 59 && segundo <= 59) {
 
             this.hora = hora;
             this.minuto = minuto;
@@ -100,7 +91,7 @@ private int hora;
 
     public String dimeHora() {
 
-        String hora = getHora() + ":" + getMinuto() + ":" + getSegundo();
+        String hora = horaCero(getHora()) + ":" + MinutoCero(getMinuto()) + ":" + segundoCero(getSegundo());
         return hora;
     }
 
@@ -108,14 +99,17 @@ private int hora;
 
         String hora12;
         int hora = 0;
+        String franja;
 
         if (getHora() >= 13) {
             hora = getHora() - 12;
+            franja = " pm";
         } else {
-                hora = getHora();
-            }
+            hora = getHora();
+            franja = " am";
+        }
 
-        hora12 = Integer.toString(hora) + ":" + getMinuto() + ":" + getSegundo();
+        hora12 = Integer.toString(hora) + ":" + getMinuto() + ":" + getSegundo() + franja;
         return hora12;
     }
 
@@ -125,6 +119,36 @@ private int hora;
 
     public void imprimeHora12() {
         System.out.println(dimeHora12());
+    }
+
+    public String horaCero(int hora) {
+        String horas = "";
+        if (hora < 10) {
+            horas = "0" + hora;
+        } else {
+            horas = Integer.toString(hora);
+        }
+        return horas;
+    }
+
+    public String MinutoCero(int minuto) {
+        String minutos = "";
+        if (minuto < 10) {
+            minutos = "0" + minuto;
+        } else {
+            minutos = Integer.toString(minuto);
+        }
+        return minutos;
+    }
+
+    public String segundoCero(int segundo) {
+        String segundos = "";
+        if (segundo < 10) {
+            segundos = "0" + getSegundo();
+        } else {
+            segundos = Integer.toString(getSegundo());
+        }
+        return segundos;
     }
 
     public void tick() {
