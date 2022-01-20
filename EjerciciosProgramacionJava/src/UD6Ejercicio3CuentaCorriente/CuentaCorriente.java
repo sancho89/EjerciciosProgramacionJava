@@ -60,7 +60,7 @@ public class CuentaCorriente {
 
     public boolean retirar(double cantidad) {
 
-        if (cantidad > 0 && saldo > 0 && saldo > cantidad) {
+        if (cantidad > 0 && getNCuenta() > 0 && getSaldo() > cantidad) {
             saldo -= cantidad;
             return true;
         } else {
@@ -70,6 +70,6 @@ public class CuentaCorriente {
     }
 
     public void imprime() {
-        System.out.println("Nº Cuenta: " + nCuenta + "   Saldo: " + saldo);
+        System.out.println("Nº Cuenta: " + getNCuenta() + "   Saldo: " + getSaldo());
     }
 }

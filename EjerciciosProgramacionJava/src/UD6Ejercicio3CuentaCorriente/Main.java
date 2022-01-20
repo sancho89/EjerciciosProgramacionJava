@@ -19,6 +19,10 @@ public class Main {
         CuentaCorriente cuenta1 = new CuentaCorriente(1, 5000);
         CuentaCorriente cuenta2 = new CuentaCorriente(2, 2500);
         CuentaCorriente cuenta3 = new CuentaCorriente(3, 10000);
+        
+        cuenta1.setSaldo(3000);
+        
+
 
         cuenta1.imprime();
         cuenta2.imprime();
