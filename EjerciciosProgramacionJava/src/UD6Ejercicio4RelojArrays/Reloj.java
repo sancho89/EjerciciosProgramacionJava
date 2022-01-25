@@ -90,4 +90,12 @@ public class Reloj {
             hora = (hora + 1) % 24;
         }
     }
+    
+    public void tick(int s) {
+        
+        for (int i = 0; i < s; i++) {
+            tick();
+        }
+        
+    }
 }

@@ -45,11 +45,11 @@ public class Main {
             int anyo = in.nextInt();
 
             System.out.println("Tipo de coche: 1.MINI - 2.UTILITARIO, 3.FAMILIAR, 4.DEPORTIVO");
-            int tipo = in.nextInt();
+            int opcion = in.nextInt();
 
             tipoCoche tipoCoche = null;
 
-            switch (tipo) {
+            switch (opcion) {
                 case 1:
                     tipoCoche = tipoCoche.MINI;
                     break;
@@ -64,11 +64,11 @@ public class Main {
                     break;
             }
             System.out.println("Modalidad seguro: 1.TERCEROS, 2.TODO_RIESGO");
-            int modalidad = in.nextInt();
+            int opcion2 = in.nextInt();
 
             modalidadSeguro seguro = null;
 
-            if (modalidad == 1) {
+            if (opcion2 == 1) {
                 contTerceros++;
                 seguro = modalidadSeguro.TERCEROS;
             } else {

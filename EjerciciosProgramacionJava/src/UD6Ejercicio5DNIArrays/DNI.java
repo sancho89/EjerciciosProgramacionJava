@@ -10,7 +10,7 @@ public class DNI {
     public DNI(int dni) {
         this.dni = dni;
     }
-    
+
     // GETTERS
     public int getDNI() {
         return this.dni;
@@ -21,7 +21,7 @@ public class DNI {
     }
 
     public String getNIF() {
-        return ( "" + dni + getLetra() );
+        return ("" + dni + getLetra());
     }
 
     // SETTERS
@@ -32,5 +32,13 @@ public class DNI {
     // OTROS MÉTODOS
     public void imprime() {
         System.out.println(getNIF());
+    }
+
+    public static DNI newRandomDNI() {
+        
+       DNI num = new DNI((int) (Math.random() * (99999999 - 11111111 + 1) + 11111111));
+       
+       return num;
+
     }
 }
