@@ -63,7 +63,7 @@ public class Agenda {
             System.out.println("No existe ningún contacto en la agenda.");
         } else {
             for (int i = 0; i < cuantos; i++) {
-                if (contactos[i].getNombre().compareToIgnoreCase(nombre) == 0) {
+                if (contactos[i].getNombre().toUpperCase().indexOf(nombre.toUpperCase()) >= 0) {
                     pos[cuantosAux] = i;
                     cuantosAux++;
                 }
