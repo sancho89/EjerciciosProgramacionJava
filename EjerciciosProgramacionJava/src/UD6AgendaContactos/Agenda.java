@@ -57,12 +57,22 @@ public class Agenda {
 
     public int[] buscarContacto(String nombre) {
 
-        for (int i = 0; i < cuantos; i++) {
-            if (contactos[i].getNombre().compareToIgnoreCase(nombre) == 0) {
-                pos[cuantosAux] = i;
-                cuantosAux++;
+        cuantosAux = 0;
+        
+        if (cuantos == 0) {
+            System.out.println("No existe ningún contacto en la agenda.");
+        } else {
+            for (int i = 0; i < cuantos; i++) {
+                if (contactos[i].getNombre().compareToIgnoreCase(nombre) == 0) {
+                    pos[cuantosAux] = i;
+                    cuantosAux++;
+                }
+            }
+            if (cuantosAux == 0) {
+                System.out.println("No se han encontrado coincidencias");
             }
         }
+
         return pos;
     }
 
@@ -74,10 +84,16 @@ public class Agenda {
     }
 
     public void imprimirTodos() {
-        for (int i = 0; i < cuantos; i++) {
-            System.out.print(i + ". ");
-            contactos[i].imprimir();
+
+        if (cuantos == 0) {
+            System.out.println("No existen contactos en la agenda.");
+        } else {
+            for (int i = 0; i < cuantos; i++) {
+                System.out.print(i + ". ");
+                contactos[i].imprimir();
+            }
         }
+
     }
 
 }

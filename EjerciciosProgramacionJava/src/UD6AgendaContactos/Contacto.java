@@ -62,8 +62,8 @@ public class Contacto {
     }
     
     public String getAll() {
-        
-        return getNombre() + "  " + getTelefono() + "  " + getCorreo();
+        String info = getNombre() + "  " + getTelefono() + "  " + getCorreo();
+        return info;
     }
 
 }
