@@ -24,6 +24,7 @@ public class Main {
  
         do {
 
+            System.out.println("");
             System.out.println("1. Ver contactos");
             System.out.println("2. Agregar contacto.");
             System.out.println("3. Eliminar contacto.");
