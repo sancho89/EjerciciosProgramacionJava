@@ -64,7 +64,7 @@ public class Banco {
 
     }
 
-    public void ingresarCuenta(double cantidad, int posicion) {
+    public void ingresarDinero(double cantidad, int posicion) {
         if (posicion >= 0 && posicion <= nCuentas) {
             cuentas[posicion].ingresarDinero(cantidad);
         } else {

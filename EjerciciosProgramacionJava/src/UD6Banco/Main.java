@@ -51,14 +51,13 @@ public class Main {
 
                 case 2:
                     banco.imprimirTodos();
-                    
                     System.out.println("Indica la posición de la cuenta.");
                     posicion = in.nextInt();
 
                     System.out.println("Indica la cantidad a ingresar.");
                     cantidad = in.nextDouble();
 
-                    banco.ingresarCuenta(cantidad, posicion);
+                    banco.ingresarDinero(cantidad, posicion);
                     break;
 
                 case 3: 
@@ -116,7 +115,7 @@ public class Main {
                     banco.mostrarMorosos();
                     break;
 
-                case 9:
+                default:
                     System.out.println("Hasta la próxima");
                     salir = true;
                     break;
