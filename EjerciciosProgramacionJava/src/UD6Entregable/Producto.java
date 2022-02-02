@@ -18,9 +18,19 @@ public class Producto {
     private int cantidad;
 
     public Producto(String nombre, double precio, int cantidad) {
+        
+        if (precio <= 0) {
+            System.err.println("ERROR. El precio no puede ser igual o inferior a 0.");
+        } else {
+            this.precio = precio;
+        }
+        
+        if (cantidad <= 0) {
+            System.err.println("ERROR. La cantidad no puede ser igual o inferior a 0.");
+        } else {
+            this.cantidad = cantidad;
+        }
 
-        this.precio = precio;
-        this.cantidad = cantidad;
         this.nombre = nombre;
 
     }

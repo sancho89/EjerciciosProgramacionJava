@@ -90,6 +90,7 @@ public class Banco {
         nCuentasAux = 0;
 
         for (int i = 0; i < nCuentas; i++) {
+            
             if (cuentas[i].getTitular().toUpperCase().indexOf(nombre.toUpperCase()) >= 0) {
                 pos[nCuentasAux] = i;
                 nCuentasAux++;
