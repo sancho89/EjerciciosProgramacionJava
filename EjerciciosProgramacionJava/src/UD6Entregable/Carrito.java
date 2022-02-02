@@ -77,39 +77,50 @@ public class Carrito {
                 productos[i - 1] = productos[i];
             }
             nProductos--;
-        } else System.err.println("ERROR. La posición del producto a borrar no existe.");
-
+        } else {
+            System.err.println("ERROR. La posición del producto a borrar no existe.");
+        }
     }
-    
-    public void vaciarCarrito () {
+
+    public void vaciarCarrito() {
         nProductos = 0;
         productos = new Producto[MAX];
+        System.out.println("Tu carrito ha sido vaciado con éxito.");
     }
-    
+
     public double totalPrecioCarrito() {
-        
-        double suma = 0;
-        
+
+        double totalSinDto = 0;
+
         for (int i = 0; i < nProductos; i++) {
-            suma += productos[i].getPrecio();
+            totalSinDto += productos[i].getPrecio() * productos[i].getCantidad();
         }
-        return suma;
+        return totalSinDto;
     }
-    
-    public void imprimirTotal() {
-        System.out.println("Precio total carrito: " + totalPrecioCarrito());
+
+    public void imprimirTotal(double total) {
+        System.out.println(total);
     }
- 
-   /* public void aplicarDescuento(double total){
-        double dtoVolumenCompra = 0.1;
-        double dtoFormaPago = 0.05;
+
+    public double aplicarDescuento() {
+
+        double descuento = 1;
         double totalConDto;
         boolean conTarjeta = false;
-        if(conTarjeta == true){
-             totalConDto = total * dtoFormaPago;
-        } if (total > 100) {
-            
+        if (conTarjeta == true) {
+            descuento -= 0.05;
         }
-    }*/
+        if (totalPrecioCarrito() > 100) {
+            descuento -= 0.10;
+        }
+
+        totalConDto = descuento * totalPrecioCarrito();
+
+        return totalConDto;
+    }
+
+    public double aplicarIVA() {
+        return aplicarDescuento() * 1.21;
+    }
 
 }
