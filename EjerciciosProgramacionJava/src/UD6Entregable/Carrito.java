@@ -44,6 +44,22 @@ public class Carrito {
         return nProductosAux;
     }
 
+    public void setProductos(Producto[] productos) {
+        this.productos = productos;
+    }
+
+    public void setnProductos(int nProductos) {
+        this.nProductos = nProductos;
+    }
+
+    public void setnProductosAux(int nProductosAux) {
+        this.nProductosAux = nProductosAux;
+    }
+
+    public void setPos(int[] pos) {
+        this.pos = pos;
+    }
+
     public int[] getPos() {
         return pos;
     }
