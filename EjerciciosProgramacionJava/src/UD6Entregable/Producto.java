@@ -18,13 +18,13 @@ public class Producto {
     private int cantidad;
 
     public Producto(String nombre, double precio, int cantidad) {
-        
+
         if (precio <= 0) {
             System.err.println("ERROR. El precio no puede ser igual o inferior a 0.");
         } else {
             this.precio = precio;
         }
-        
+
         if (cantidad <= 0) {
             System.err.println("ERROR. La cantidad no puede ser igual o inferior a 0.");
         } else {
@@ -59,14 +59,18 @@ public class Producto {
         this.cantidad = cantidad;
     }
 
-    public String getAll() {
+    public String getAll(boolean mostrarSubtotal) {
 
-        return getNombre() + " " + getPrecio() + " " + getCantidad();
+        if (mostrarSubtotal) {
+            return getNombre() + "\t" + getPrecio() + " €/ud.\t" + getCantidad() + " uds." + "\t" + (getPrecio() * getCantidad() + " €");
+        } else {
+            return getNombre() + "     " + getPrecio() + " €/ud.     " + getCantidad() + " uds.";
+        }
 
     }
 
-    public void imprimir() {
-        System.out.println(getAll());
+    public void imprimir(boolean mostrarSubtotal) {
+        System.out.println(getAll(mostrarSubtotal));
     }
 
 }
