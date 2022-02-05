@@ -59,18 +59,14 @@ public class Producto {
         this.cantidad = cantidad;
     }
 
-    public String getAll(boolean mostrarSubtotal) {
+    public void imprimir(boolean mostrarSubtotal) {
 
         if (mostrarSubtotal) {
-            return getNombre() + "\t" + getPrecio() + " €/ud.\t" + getCantidad() + " uds." + "\t" + (getPrecio() * getCantidad() + " €");
+            System.out.printf("%-30s%10s%10s%10s%n", getNombre(), String.format("%.2f",getPrecio()) + " €/ud.", getCantidad() + " uds.", String.format("%.2f",(getPrecio() * getCantidad())) + " €");
         } else {
-            return getNombre() + "     " + getPrecio() + " €/ud.     " + getCantidad() + " uds.";
+            System.out.printf("%-30s%10s%10s%n", getNombre(), String.format("%.2f",getPrecio()) + " €/ud.", getCantidad() + " uds.");
         }
-
-    }
-
-    public void imprimir(boolean mostrarSubtotal) {
-        System.out.println(getAll(mostrarSubtotal));
+        
     }
 
 }

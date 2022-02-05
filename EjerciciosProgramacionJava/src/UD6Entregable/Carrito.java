@@ -32,7 +32,7 @@ public class Carrito {
         return productos;
     }
 
-    public int getnProducos() {
+    public int getnProductos() {
         return nProductos;
     }
 
@@ -120,10 +120,6 @@ public class Carrito {
         return totalSinDto;
     }
 
-    public void imprimirTotal(double total) {
-        System.out.println(total);
-    }
-
     public double aplicarDescuento(int conTarjeta) {
 
         double descuento = 1;
@@ -147,17 +143,15 @@ public class Carrito {
 
     public void resumenTicket(boolean mostrarSubtotal, int conTarjeta) {
         
+        System.out.println("----------------------------------------------------------------");
         mostrarCarrito(mostrarSubtotal);
-        System.out.println("--------------------------------------------");
-        System.out.print("TOTAL SIN DESCUENTO: ");
-        imprimirTotal(totalPrecioCarrito());
-     
-        System.out.print("TOTAL CON DESCUENTO: ");
-        imprimirTotal(aplicarDescuento(conTarjeta));
-        
-        System.out.print("TOTAL A PAGAR: ");
-        imprimirTotal(aplicarIVA(conTarjeta));
+        System.out.println("----------------------------------------------------------------");
 
+        System.out.printf("%-30s%33s%n", "TOTAL SIN DESCUENTO:", String.format("%.2f", totalPrecioCarrito()) + " €");
+        System.out.printf("%-30s%33s%n", "TOTAL CON DESCUENTO:", String.format("%.2f", aplicarDescuento(conTarjeta)) + " €");
+        System.out.printf("%-30s%33s%n", "TOTAL A PAGAR:", String.format("%.2f", aplicarIVA(conTarjeta)) + " €");
+        System.out.println("");
+        System.out.println("Descuento pago con tarjeta 5% / Descuento por volumen de compra 10%");
     }
 
     public int[] buscarProducto(String busqueda) {

@@ -84,7 +84,6 @@ public class Main {
                     break;
 
                 case 6:
-
                     System.out.println("Modalidad de pago: 1.CON TARJETA - 2.EFECTIVO");
                     int conTarjeta = in.nextInt();
 
@@ -97,7 +96,5 @@ public class Main {
                     break;
             }
         } while (!salir);
-
     }
-
 }
