@@ -35,6 +35,18 @@ public class Ejercicio2 {
 
             if (nota >= 0 && nota <= 10) {
                 Nota.add(nota);
+                sumatorio += nota;
+            }
+
+            if (nota >= 5) {
+                aprobados++;
+            } else if (nota < 5 && nota >= 0) {
+                suspendidos++;
+            }
+            if (nota == 0) {
+                hayCero = true;
+            } else if (nota == 10) {
+                hayDiez = true;
             }
 
         } while (nota != -1);
@@ -42,19 +54,6 @@ public class Ejercicio2 {
         for (int i = 0; i < Nota.size(); i++) {
 
             System.out.println("Nota " + i + ": " + Nota.get(i));
-            sumatorio += Nota.get(i);
-
-            if (Nota.get(i) >= 5) {
-                aprobados++;
-            } else {
-                suspendidos++;
-            }
-            if (Nota.get(i) == 0) {
-                hayCero = true;
-            }
-            else if (Nota.get(i) == 10) {
-                hayDiez = true;
-            }
 
         }
 
@@ -72,7 +71,7 @@ public class Ejercicio2 {
             System.out.println("No hay ningún 10.");
         }
 
-        System.out.println("La nota media es:" +  ((double)sumatorio / Nota.size()));
+        System.out.println("La nota media es:" + ((double) sumatorio / Nota.size()));
     }
 
 }
