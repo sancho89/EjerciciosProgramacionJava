@@ -79,7 +79,7 @@ public class Main {
                     buscar = pedirString();
                     
                     // Buscamos contactos. Los obtenemos en una agenda auxiliar e imprimimos
-                    agendaEncontrados = agenda.buscarTelefono(buscar);
+                    agendaEncontrados = agenda.buscarCorreo(buscar);
                     agendaEncontrados.imprimirTodos();
                     break;
                     

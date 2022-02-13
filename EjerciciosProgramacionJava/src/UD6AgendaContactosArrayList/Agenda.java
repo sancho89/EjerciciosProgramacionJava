@@ -7,8 +7,8 @@ public class Agenda {
 
     // Atributos
     private ArrayList<Contacto> contactos;
-    int cuantos;
     private static final int MAX = 100;
+    private int cuantos;
 
     // Constructor. Crea una agenda vacía.
     Agenda() {
@@ -16,14 +16,15 @@ public class Agenda {
         cuantos = 0;
     }
 
+    public int getCuantos() {
+        return cuantos;
+    }
+
     // GETTERS
     ArrayList<Contacto> getContactos() {
         return contactos;
     }
 
-    int getCuantos() {
-        return cuantos;
-    }
 
     // SETTERS: ¡Ninguno! La agfenda puede quedar en un estado inconsistente
     // si se permite modificar 'contactos' y 'cuantos' desde fuera de la clase.
@@ -31,7 +32,7 @@ public class Agenda {
     // Agrega un objeto tipo contacto a la agenda (lo añade al vector y cuantos++)
     void agregarContacto(Contacto c) {
         // Si la agendalength no está llena y no existe un contacto con ese nombre
-        if (cuantos < MAX && !comprobarSiExiste(c.getNombre())) {
+        if (contactos.size() < MAX && !comprobarSiExiste(c.getNombre())) {
             contactos.add(c);
             cuantos++;
         } else {
@@ -51,56 +52,12 @@ public class Agenda {
 
     // Comprueba si existe algún contacto que se llame exactamente como 'nombre'. Devuelve true/false.
     boolean comprobarSiExiste(String nombre) {
-        for (int i = 0; i < cuantos; i++) {
+        for (int i = 0; i < contactos.size(); i++) {
             if (contactos.get(i).equals(nombre)) {
                 return true;
             }
         }
         return false;
-    }
-
-    // Versión 1: Devuelve un int[] con las posiciones del vector ‘contactos’ cuyo nombre contiene ‘nombre’
-    int[] buscarNombreV1(String str) {
-
-        // Vector de posiciones
-        int[] vpos = new int[contactos.size()];
-        // Número de posiciones encontradas
-        int npos = 0;
-
-        // Recorremos 'contactos' buscando los contactos cuyo nombre contiene 'str'
-        // Guardaremos en 'vpos' las posiciones que coincidan con la búsqueda
-        for (int i = 0; i < cuantos; i++) {
-            if (contactos.get(i).getNombre().toUpperCase().contains(str.toUpperCase())) {
-                vpos[npos] = i;
-                npos++;
-            }
-        }
-
-        // Reducimos el tamaño de 'vpos' al mínimo y lo devolvemos
-        vpos = Arrays.copyOf(vpos, npos);
-        return vpos;
-    }
-
-    // Versión 2: Devuelve un vector de Contactos con los contactos cuyo nombre contiene ‘str’
-    Contacto[] buscarNombreV2(String str) {
-
-        // Vector de contactos
-        Contacto[] vcon = new Contacto[contactos.size()];
-        // Número de contactos encontrados
-        int ncon = 0;
-
-        // Recorremos 'contactos' buscando los contactos cuyo nombre contiene 'str'
-        // Guardaremos en 'vcon' los contactos que coincidan con la búsqueda
-        for (int i = 0; i < cuantos; i++) {
-            if (contactos.get(i).getNombre().toUpperCase().contains(str.toUpperCase())) {
-                contactos.set(i, contactos.get(i));
-                ncon++;
-            }
-        }
-
-        // Reducimos el tamaño de 'vcon' al mínimo y lo devolvemos
-        vcon = Arrays.copyOf(vcon, ncon);
-        return vcon;
     }
 
     // Versión 3: Devuelve una agenda con los contactos cuyo nombre contiene ‘str’
@@ -111,7 +68,7 @@ public class Agenda {
 
         // Recorremos 'contactos' buscando los contactos cuyo nombre contiene 'str'
         // Guardaremos en la agenda 'a' los contactos que coincidan con la búsqueda
-        for (int i = 0; i < cuantos; i++) {
+        for (int i = 0; i < contactos.size(); i++) {
             if (contactos.get(i).getNombre().toUpperCase().contains(str.toUpperCase())) {
                 at.agregarContacto(contactos.get(i));
             }
@@ -129,7 +86,7 @@ public class Agenda {
 
         // Recorremos 'contactos' buscando los contactos cuyo teléfono contiene 'str'
         // Guardaremos en la agenda 'a' los contactos que coincidan con la búsqueda
-        for (int i = 0; i < cuantos; i++) {
+        for (int i = 0; i < contactos.size(); i++) {
             if (contactos.get(i).getTelefono().toUpperCase().contains(str.toUpperCase())) {
                 at.agregarContacto(contactos.get(i));
             }
@@ -147,7 +104,7 @@ public class Agenda {
 
         // Recorremos 'contactos' buscando los contactos cuyo correo contiene 'str'
         // Guardaremos en la agenda 'a' los contactos que coincidan con la búsqueda
-        for (int i = 0; i < cuantos; i++) {
+        for (int i = 0; i < contactos.size(); i++) {
             if (contactos.get(i).getCorreo().toUpperCase().contains(str.toUpperCase())) {
                 at.agregarContacto(contactos.get(i));
             }
@@ -165,7 +122,7 @@ public class Agenda {
 
         // Recorremos 'contactos' buscando los contactos cuyos datos contienen 'str'
         // Guardaremos en la agenda 'a' los contactos que coincidan con la búsqueda
-        for (int i = 0; i < cuantos; i++) {
+        for (int i = 0; i < contactos.size(); i++) {
             if (contactos.get(i).getAll().toUpperCase().contains(str.toUpperCase())) {
                 at.agregarContacto(contactos.get(i));
             }
@@ -177,7 +134,7 @@ public class Agenda {
 
     // Imprime la información de todos los contactos
     void imprimirTodos() {
-        for (int i = 0; i < cuantos; i++) {
+        for (int i = 0; i < contactos.size(); i++) {
             System.out.print(i + " ");
             contactos.get(i).imprimir();
         }
