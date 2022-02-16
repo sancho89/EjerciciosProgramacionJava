@@ -18,26 +18,25 @@ public class Ejercicio10 {
 
         double[] vector = new double[5];
         Scanner in = new Scanner(System.in);
-        boolean parar = false;
+        int cont = 0;
 
         do {
+           
             try {
 
-                for (int i = 0; i < vector.length; i++) {
-                    System.out.println("Introduce un valor");
-                    vector[i] = in.nextDouble();
-                }
-                parar = true;
-                for (int i = 0; i < vector.length; i++) {
-                    System.out.println(vector[i]);
-                }
+                vector[cont] = in.nextDouble();
+                cont++;
 
             } catch (InputMismatchException a) {
                 System.err.println("Valor introducido no válido");
                 in.nextLine();
             }
 
-        } while (!parar);
+        } while (cont < 5);
+        
+        for (int i = 0; i < vector.length; i++) {
+            System.out.println(vector[i]);
+        }
 
     }
 
