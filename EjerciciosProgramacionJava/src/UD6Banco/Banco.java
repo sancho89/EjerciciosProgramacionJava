@@ -53,7 +53,7 @@ public class Banco {
 
     public void eliminarCuenta(int posicion) {
 
-        if (posicion >= 0 && posicion <= nCuentas) {
+        if (posicion >= 0 && posicion < nCuentas) {
             for (int i = posicion + 1; i < nCuentas; i++) {
                 cuentas[i - 1] = cuentas[i];
             }
@@ -65,40 +65,72 @@ public class Banco {
     }
 
     public void ingresarDinero(double cantidad, int posicion) {
-        if (posicion >= 0 && posicion <= nCuentas) {
+
+        try {
             cuentas[posicion].ingresarDinero(cantidad);
-        } else {
-            System.err.println("ERROR. La cuenta no existe.");
+        } catch (CuentaException ingresar) {
+            System.err.println(ingresar.getMessage());
+
+        } catch (IndexOutOfBoundsException ingresar) {
+            System.err.println("ERROR: La cuenta introducida está fuera de rango.");
+
+        } catch (NullPointerException ingresar) {
+            System.err.println("ERROR: La cuenta no existe");
         }
+
     }
 
     public void retirarDinero(double cantidad, int posicion) {
-        if (posicion >= 0 && posicion <= nCuentas) {
+
+        try {
             cuentas[posicion].retirarDinero(cantidad);
-        } else {
-            System.err.println("ERROR. La cuenta no existe.");
+        } catch (CuentaException retirar) {
+            System.err.println(retirar.getMessage());
+        } catch (IndexOutOfBoundsException ingresar) {
+            System.err.println("ERROR: La cuenta introducida está fuera de rango.");
+
+        } catch (NullPointerException ingresar) {
+            System.err.println("ERROR: La cuenta no existe");
         }
+
     }
 
     public void transferenciaCantidad(int posOrigen, int posDestino, double cantidad) {
-        cuentas[posOrigen].retirarDinero(cantidad);
-        cuentas[posDestino].ingresarDinero(cantidad);
+
+        try {
+            cuentas[posOrigen].retirarDinero(cantidad);
+            try {
+                cuentas[posDestino].ingresarDinero(cantidad);
+            } catch (CuentaException e) {
+                cuentas[posOrigen].ingresarDinero(cantidad);
+            }
+            
+        } catch (CuentaException e) {
+            System.err.println(e.getMessage());
+            
+        } catch (IndexOutOfBoundsException e) {
+            System.err.println("ERROR: La cuenta introducida está fuera de rango.");
+
+        } catch (NullPointerException e) {
+            System.err.println("ERROR: La cuenta no existe");
+        }
+
     }
 
     public int[] buscarCuenta(String nombre) {
-        
+
         nCuentasAux = 0;
 
         for (int i = 0; i < nCuentas; i++) {
-            
+
             if (cuentas[i].getTitular().toUpperCase().indexOf(nombre.toUpperCase()) >= 0) {
                 pos[nCuentasAux] = i;
                 nCuentasAux++;
-            } 
+            }
         }
         if (nCuentasAux == 0) {
-                System.out.println("No se han encontrado coincidencias");
-            }
+            System.out.println("No se han encontrado coincidencias");
+        }
         return pos;
     }
 

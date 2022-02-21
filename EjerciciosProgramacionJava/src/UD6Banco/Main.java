@@ -11,7 +11,7 @@ package UD6Banco;
  * @version 1.0
  * @date 29 ene. 2022 10:48:33
  */
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -51,27 +51,43 @@ public class Main {
 
                 case 2:
                     banco.imprimirTodos();
-                    System.out.println("Indica la posición de la cuenta.");
-                    posicion = in.nextInt();
 
-                    System.out.println("Indica la cantidad a ingresar.");
-                    cantidad = in.nextDouble();
+                    try {
+                        System.out.println("Indica la posición de la cuenta.");
+                        posicion = in.nextInt();
 
-                    banco.ingresarDinero(cantidad, posicion);
+                        System.out.println("Indica la cantidad a ingresar.");
+                        cantidad = in.nextDouble();
+
+                        banco.ingresarDinero(cantidad, posicion);
+
+                    } catch (InputMismatchException e) {
+                        System.err.println("ERROR: El valor introducido no es válido.");
+                        in.nextLine();
+                    }
+
                     break;
 
-                case 3: 
+                case 3:
                     banco.imprimirTodos();
-                    System.out.println("Indica la posición de la cuenta.");
-                    posicion = in.nextInt();
 
-                    System.out.println("Indica la cantidad a retirar.");
-                    cantidad = in.nextDouble();
+                    try {
+                        System.out.println("Indica la posición de la cuenta.");
+                        posicion = in.nextInt();
 
-                    banco.retirarDinero(cantidad, posicion);
+                        System.out.println("Indica la cantidad a retirar.");
+                        cantidad = in.nextDouble();
+
+                        banco.retirarDinero(cantidad, posicion);
+                    } catch (InputMismatchException e) {
+                        System.err.println("ERROR: El valor introducido no es válido.");
+                        in.nextLine();
+                    }
                     break;
 
                 case 4:
+                    
+                    try {
                     banco.imprimirTodos();
                     System.out.println("Indica la posición de la cuenta de origen.");
                     posOrigen = in.nextInt();
@@ -83,9 +99,16 @@ public class Main {
                     cantidad = in.nextDouble();
 
                     banco.transferenciaCantidad(posOrigen, posDestino, cantidad);
-                    break;
+
+                } catch (InputMismatchException e) {
+                    System.err.println("ERROR: El valor introducido no es válido.");
+                    in.nextLine();
+                }
+                break;
 
                 case 5:
+                    try {
+
                     in.nextLine();
                     System.out.println("Indica el titular de la cuenta.");
                     titular = in.nextLine();
@@ -94,20 +117,32 @@ public class Main {
                     saldo = in.nextDouble();
 
                     banco.agregarCuenta(new Cuenta(titular, saldo));
-                    break;
+
+                } catch (InputMismatchException e) {
+                    System.err.println("ERROR: El valor introducido no es válido.");
+                    in.nextLine();
+                }
+
+                break;
 
                 case 6:
+                    
+                    try {
                     System.out.println("Indica la posición de la cuenta a eliminar.");
                     posicion = in.nextInt();
-                    
-                    banco.eliminarCuenta(posicion);
-                    break;
 
-                case 7: 
+                    banco.eliminarCuenta(posicion);
+                } catch (InputMismatchException e) {
+                    System.err.println("ERROR: El valor introducido no es válido.");
+                    in.nextLine();
+                }
+                break;
+
+                case 7:
                     in.nextLine();
                     System.out.println("Indica el nombre del titular que deseas buscar.");
                     titular = in.nextLine();
-                    
+
                     banco.mostrarCuenta(banco.buscarCuenta(titular));
                     break;
 

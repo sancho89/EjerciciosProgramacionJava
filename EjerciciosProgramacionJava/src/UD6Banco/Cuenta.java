@@ -18,12 +18,13 @@ public class Cuenta {
     private double saldo;
 
     // CONSTRUCTOR
-    public Cuenta(String titular, double saldo) {
+    public Cuenta(String titular, double saldo) throws CuentaException {
+        
         this.titular = titular;
         if (saldo >= 0) {
             this.saldo = saldo;
         } else {
-            System.err.println("ERROR. No se puede crear una cuenta con saldo negativo.");
+            throw new CuentaException ("ERROR. No se puede crear una cuenta con saldo negativo.");
         }
 
     }
@@ -51,25 +52,26 @@ public class Cuenta {
         return getTitular() + "  Saldo: " + getSaldo();
     }
 
-    public void ingresarDinero(double cantidad) {
+    public void ingresarDinero(double cantidad) throws CuentaException {
+        
         if (cantidad > 0) {
             saldo += cantidad;
         } else {
-            System.err.println("ERROR. No se puede ingresar una cantidad negativa");
+            throw new CuentaException("ERROR. No se puede ingresar una cantidad negativa");
         }
 
     }
 
-    public void retirarDinero(double cantidad) {
+    public void retirarDinero(double cantidad) throws CuentaException {
         if ((saldo + 100) >= cantidad) {
             if (cantidad > 0) {
                 saldo -= cantidad;
             } else {
-                System.err.println("ERROR. No se puede retirar una cantidad negativa");
+                throw new CuentaException("ERROR. No se puede retirar una cantidad negativa");
             }
 
         } else {
-            System.err.println("ERROR. El saldo es inferior a la cantidad a retirar.");
+            throw new CuentaException("ERROR. El saldo es inferior a la cantidad a retirar.");
 
         }
     }
