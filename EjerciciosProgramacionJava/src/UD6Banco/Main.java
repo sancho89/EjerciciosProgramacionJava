@@ -116,10 +116,13 @@ public class Main {
                     System.out.println("Indica el saldo de la cuenta.");
                     saldo = in.nextDouble();
 
-                    banco.agregarCuenta(new Cuenta(titular, saldo));
-
+                    //banco.agregarCuenta(new Cuenta(titular, saldo));
                 } catch (InputMismatchException e) {
                     System.err.println("ERROR: El valor introducido no es válido.");
+                    in.nextLine();
+                    
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
                     in.nextLine();
                 }
 
@@ -135,15 +138,22 @@ public class Main {
                 } catch (InputMismatchException e) {
                     System.err.println("ERROR: El valor introducido no es válido.");
                     in.nextLine();
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
                 }
                 break;
 
                 case 7:
+                    
+                    try {
                     in.nextLine();
                     System.out.println("Indica el nombre del titular que deseas buscar.");
                     titular = in.nextLine();
 
                     banco.mostrarCuenta(banco.buscarCuenta(titular));
+                    } catch (Exception e) {
+                        System.err.println(e.getMessage());
+                    }
                     break;
 
                 case 8:

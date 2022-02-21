@@ -35,7 +35,7 @@ public class Banco {
     }
 
     // MÉTODOS
-    public void agregarCuenta(Cuenta cuenta) {
+    public void agregarCuenta(Cuenta cuenta) throws Exception {
 
         if (nCuentas < 100) {
             cuentas[nCuentas] = cuenta;
@@ -46,12 +46,12 @@ public class Banco {
                 }
             }
         } else {
-            System.err.println("ERROR. Lista Llena, borra una cuenta primero.");
+            throw new Exception ("ERROR. Lista Llena, borra una cuenta primero.");
         }
 
     }
 
-    public void eliminarCuenta(int posicion) {
+    public void eliminarCuenta(int posicion) throws Exception {
 
         if (posicion >= 0 && posicion < nCuentas) {
             for (int i = posicion + 1; i < nCuentas; i++) {
@@ -59,7 +59,7 @@ public class Banco {
             }
             nCuentas--;
         } else {
-            System.err.println("ERROR. La cuenta no existe.");
+            throw new Exception ("ERROR. La cuenta no existe.");
         }
 
     }
@@ -117,7 +117,7 @@ public class Banco {
 
     }
 
-    public int[] buscarCuenta(String nombre) {
+    public int[] buscarCuenta(String nombre) throws Exception {
 
         nCuentasAux = 0;
 
@@ -129,7 +129,7 @@ public class Banco {
             }
         }
         if (nCuentasAux == 0) {
-            System.out.println("No se han encontrado coincidencias");
+            throw new Exception ("No se han encontrado coincidencias");
         }
         return pos;
     }
