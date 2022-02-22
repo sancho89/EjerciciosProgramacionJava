@@ -26,6 +26,8 @@ public class Main {
         double cantidad;
         String titular;
         double saldo;
+        int opcion = 0;
+
 
         do {
 
@@ -39,55 +41,70 @@ public class Main {
                     + "7. Buscar cuenta.\n"
                     + "8. Mostrar morosos.\n"
                     + "9. Salir.\n"
-                    + "¿Opción?.");
-
-            int opcion = in.nextInt();
-
+                    + "¿Opción?");
+            
+            try {
+            opcion = in.nextInt();
+            } catch (Exception e)  {
+                System.out.println(e.getMessage());
+            }
+            
             switch (opcion) {
 
                 case 1:
+                    try {
                     banco.imprimirTodos();
-                    break;
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
+                    in.nextLine();
+                }
+                break;
 
                 case 2:
+
+                try {
                     banco.imprimirTodos();
+                    System.out.println("Indica la posición de la cuenta.");
+                    posicion = in.nextInt();
 
-                    try {
-                        System.out.println("Indica la posición de la cuenta.");
-                        posicion = in.nextInt();
+                    System.out.println("Indica la cantidad a ingresar.");
+                    cantidad = in.nextDouble();
 
-                        System.out.println("Indica la cantidad a ingresar.");
-                        cantidad = in.nextDouble();
+                    banco.ingresarDinero(cantidad, posicion);
 
-                        banco.ingresarDinero(cantidad, posicion);
+                } catch (InputMismatchException e) {
+                    System.err.println("ERROR: El valor introducido no es válido.");
+                    in.nextLine();
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
+                    in.nextLine();
+                }
 
-                    } catch (InputMismatchException e) {
-                        System.err.println("ERROR: El valor introducido no es válido.");
-                        in.nextLine();
-                    }
-
-                    break;
+                break;
 
                 case 3:
+
+                try {
                     banco.imprimirTodos();
+                    System.out.println("Indica la posición de la cuenta.");
+                    posicion = in.nextInt();
 
-                    try {
-                        System.out.println("Indica la posición de la cuenta.");
-                        posicion = in.nextInt();
+                    System.out.println("Indica la cantidad a retirar.");
+                    cantidad = in.nextDouble();
 
-                        System.out.println("Indica la cantidad a retirar.");
-                        cantidad = in.nextDouble();
-
-                        banco.retirarDinero(cantidad, posicion);
-                    } catch (InputMismatchException e) {
-                        System.err.println("ERROR: El valor introducido no es válido.");
-                        in.nextLine();
-                    }
-                    break;
+                    banco.retirarDinero(cantidad, posicion);
+                } catch (InputMismatchException e) {
+                    System.err.println("ERROR: El valor introducido no es válido.");
+                    in.nextLine();
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
+                    in.nextLine();
+                }
+                break;
 
                 case 4:
-                    
-                    try {
+
+                try {
                     banco.imprimirTodos();
                     System.out.println("Indica la posición de la cuenta de origen.");
                     posOrigen = in.nextInt();
@@ -103,6 +120,9 @@ public class Main {
                 } catch (InputMismatchException e) {
                     System.err.println("ERROR: El valor introducido no es válido.");
                     in.nextLine();
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
+                    in.nextLine();
                 }
                 break;
 
@@ -116,11 +136,11 @@ public class Main {
                     System.out.println("Indica el saldo de la cuenta.");
                     saldo = in.nextDouble();
 
-                    //banco.agregarCuenta(new Cuenta(titular, saldo));
+                    banco.agregarCuenta(new Cuenta(titular, saldo));
                 } catch (InputMismatchException e) {
                     System.err.println("ERROR: El valor introducido no es válido.");
                     in.nextLine();
-                    
+
                 } catch (Exception e) {
                     System.err.println(e.getMessage());
                     in.nextLine();
@@ -151,10 +171,10 @@ public class Main {
                     titular = in.nextLine();
 
                     banco.mostrarCuenta(banco.buscarCuenta(titular));
-                    } catch (Exception e) {
-                        System.err.println(e.getMessage());
-                    }
-                    break;
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
+                }
+                break;
 
                 case 8:
                     banco.mostrarMorosos();

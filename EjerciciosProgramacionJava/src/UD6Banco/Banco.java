@@ -38,15 +38,17 @@ public class Banco {
     public void agregarCuenta(Cuenta cuenta) throws Exception {
 
         if (nCuentas < 100) {
-            cuentas[nCuentas] = cuenta;
-            nCuentas++;
             for (int i = 0; i < nCuentas; i++) {
                 if (cuentas[i].getTitular().equalsIgnoreCase(cuenta.getTitular())) {
-
+                    throw new Exception("ERROR: Ya existe una cuenta con el mismo nombre.");
+                } else {
+                    cuentas[nCuentas] = cuenta;
+                    nCuentas++;
                 }
+
             }
         } else {
-            throw new Exception ("ERROR. Lista Llena, borra una cuenta primero.");
+            throw new Exception("ERROR: Lista Llena, borra una cuenta primero.");
         }
 
     }
@@ -59,37 +61,40 @@ public class Banco {
             }
             nCuentas--;
         } else {
-            throw new Exception ("ERROR. La cuenta no existe.");
+            throw new Exception("ERROR: La cuenta no existe.");
         }
 
     }
 
-    public void ingresarDinero(double cantidad, int posicion) {
+    public void ingresarDinero(double cantidad, int posicion) throws Exception {
 
         try {
-            cuentas[posicion].ingresarDinero(cantidad);
-        } catch (CuentaException ingresar) {
-            System.err.println(ingresar.getMessage());
+            if (posicion >= 0 && posicion < nCuentas) {
+                cuentas[posicion].ingresarDinero(cantidad);
+            } else {
+                throw new Exception("ERROR: La cuenta introducida está fuera de rango.");
+            }
+        } catch (CuentaException e) {
+            System.err.println(e.getMessage());
 
-        } catch (IndexOutOfBoundsException ingresar) {
-            System.err.println("ERROR: La cuenta introducida está fuera de rango.");
-
-        } catch (NullPointerException ingresar) {
+        } catch (NullPointerException e) {
             System.err.println("ERROR: La cuenta no existe");
         }
 
     }
 
-    public void retirarDinero(double cantidad, int posicion) {
+    public void retirarDinero(double cantidad, int posicion) throws Exception {
 
         try {
-            cuentas[posicion].retirarDinero(cantidad);
-        } catch (CuentaException retirar) {
-            System.err.println(retirar.getMessage());
-        } catch (IndexOutOfBoundsException ingresar) {
-            System.err.println("ERROR: La cuenta introducida está fuera de rango.");
+            if (posicion >= 0 && posicion < nCuentas) {
+                cuentas[posicion].retirarDinero(cantidad);
+            } else {
+                throw new Exception("ERROR: La cuenta introducida está fuera de rango.");
+            }
+        } catch (CuentaException e) {
+            System.err.println(e.getMessage());
 
-        } catch (NullPointerException ingresar) {
+        } catch (NullPointerException e) {
             System.err.println("ERROR: La cuenta no existe");
         }
 
@@ -104,15 +109,13 @@ public class Banco {
             } catch (CuentaException e) {
                 cuentas[posOrigen].ingresarDinero(cantidad);
             }
-            
+
         } catch (CuentaException e) {
             System.err.println(e.getMessage());
-            
+
         } catch (IndexOutOfBoundsException e) {
             System.err.println("ERROR: La cuenta introducida está fuera de rango.");
 
-        } catch (NullPointerException e) {
-            System.err.println("ERROR: La cuenta no existe");
         }
 
     }
@@ -129,7 +132,7 @@ public class Banco {
             }
         }
         if (nCuentasAux == 0) {
-            throw new Exception ("No se han encontrado coincidencias");
+            throw new Exception("No se han encontrado coincidencias");
         }
         return pos;
     }
@@ -140,9 +143,9 @@ public class Banco {
         }
     }
 
-    public void imprimirTodos() {
+    public void imprimirTodos() throws Exception {
         if (nCuentas == 0) {
-            System.err.println("ERROR. No existen cuentas");
+            throw new Exception("ERROR. No existen cuentas");
         } else {
             for (int i = 0; i < nCuentas; i++) {
                 System.out.print(i + ". ");
