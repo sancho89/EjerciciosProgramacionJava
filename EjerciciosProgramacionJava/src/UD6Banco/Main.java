@@ -46,7 +46,7 @@ public class Main {
             try {
             opcion = in.nextInt();
             } catch (Exception e)  {
-                System.out.println(e.getMessage());
+                System.err.println("ERROR: Valor introducido no válido.");
             }
             
             switch (opcion) {
