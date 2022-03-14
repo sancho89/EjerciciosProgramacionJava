@@ -16,9 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author a033564158m
  */
-public class EjerciciosTest {
+public class ejercicio1Test {
     
-    public EjerciciosTest() {
+    public ejercicio1Test() {
     }
     
     @BeforeClass
@@ -40,19 +40,7 @@ public class EjerciciosTest {
     @Test
     public void testHay_mayor_tira() {
         System.out.println("hay_mayor_tira");
-        assertEquals(false, Ejercicios.hay_mayor_tira(new char []{}, 'a'));
-        assertEquals(false, Ejercicios.hay_mayor_tira(new char[]{'a'}, 'a'));
-        assertEquals(true, Ejercicios.hay_mayor_tira(new char[]{'b'}, 'a'));
-        //fail("The test case is a prototype.");
-    }
-
-    @Test
-    public void testBuscar_en() {
-        System.out.println("buscar_en");
-        assertEquals(0, Ejercicios.buscar_en(new char []{}, 'a'));
-        assertEquals(1, Ejercicios.buscar_en(new char []{'a'}, 'a'));
-        assertEquals(0, Ejercicios.buscar_en(new char []{'b'}, 'a'));
-        assertEquals(1, Ejercicios.buscar_en(new char []{'a','b'}, 'a'));
+        assertEquals(false, ejercicio1.hay_mayor_tira(new char []{'b'}, 'a'));
         //fail("The test case is a prototype.");
     }
     
