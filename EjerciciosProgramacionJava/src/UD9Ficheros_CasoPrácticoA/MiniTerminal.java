@@ -37,6 +37,7 @@ public class MiniTerminal {
                     break;
 
                 case "cd":
+                    ruta.changeDir(opcion[1]);
                     break;
 
                 case "ls":
@@ -48,14 +49,33 @@ public class MiniTerminal {
                     break;
 
                 case "mkdir":
+                    try {
                     ruta.crearCarpeta(opcion[1]);
-                    break;
+                } catch (IndexOutOfBoundsException e) {
+                    System.err.println("ERROR: comando incorrecto, mkdir <nombreCarpeta>");
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
+                }
+                break;
 
                 case "rm":
-                    break;
+                    try {
+                    ruta.borrarCarpeta(opcion[1]);
+                } catch (IndexOutOfBoundsException e) {
+                    System.err.println("ERROR: comando incorrecto, rm <nombreCarpeta>");
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
+                }
+                break;
 
                 case "mv":
-                    break;
+                    try {
+                    ruta.moveDir(opcion[1], opcion[2]);
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
+                }
+
+                break;
 
                 case "help":
                     ruta.getHelp();
@@ -63,6 +83,10 @@ public class MiniTerminal {
 
                 case "exit":
                     salir = true;
+                    break;
+
+                default:
+                    System.err.println("ERROR: Introduzca un comando válido");
                     break;
 
             }

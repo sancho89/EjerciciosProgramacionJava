@@ -11,11 +11,20 @@ import java.util.Date;
 /**
  *
  * @author a033564158m
+ * @version 18/03/2022
  */
 public class MiniFileManager {
-
-    private File rutaActual = new File("/datos/usuarios/alumnos/a033564158m/");
-    private File carpetaActual;
+    /**
+     * @param rutaActual Representa la ruta en la que empieza el terminal
+     */
+    private File rutaActual = new File(".");
+     /**
+     * @param carpetaActual Representa la ruta en la que estamos en ese mismo momento
+     */
+    private File carpetaActual = new File(System.getProperty("user.dir"));
+     /**
+     * @param carpetaNueva Es la carpeta que se crea nueva en el directorio actual
+     */
     private File carpetaNueva;
 
     public String getPWD() {
@@ -26,15 +35,36 @@ public class MiniFileManager {
         System.out.println(getPWD());
     }
     
-    public boolean changeDir(String dir) {
-        // Cambia la ruta actual a dir
-        // ....
-        // rutaActual = new File(....);
-        return false;
-    }
+    /**
+     * Este método sirve para movernos por los directorios, podemos pasarle una ruta absoluta, una relativa o '..' si quieres subir un nivel desde el directorio actual.
+     * @param dir Es la dirección donde queremos movernos
+     */
+    public void changeDir(String dir) {
 
+        if (dir.equals("..")) {
+            String beforePath = carpetaActual.getAbsolutePath().substring(0, carpetaActual.getAbsolutePath().lastIndexOf("\\"));
+            System.out.println(beforePath);
+
+            carpetaActual = new File(beforePath);
+
+        } else if (dir.contains("C:")) { // ASEGURAR QUE TU RUTA ACTUAL SI EL ROOT ES UNA LETRA QUE NO ES 'C'.
+            carpetaActual = new File(dir);
+            System.out.println(carpetaActual.getAbsolutePath());
+
+        } else {
+            carpetaActual = new File(carpetaActual + "\\" + dir);
+            System.out.println(carpetaActual.getAbsolutePath());
+        }
+
+    }
+/**
+ * Imprime por pantalla todo el contenido de los directorios.
+ * @param info Si es true imprimirá además del nombre el tamaño del fichero y la fecha de modificación, si es false sólo imprimirá el nombre.
+ */
     public void printList(boolean info) {
+
         File[] arrayArchivos = rutaActual.listFiles();
+
         if (info) {
             for (int i = 0; i < arrayArchivos.length; i++) {
                 Date d = new Date(arrayArchivos[i].lastModified());
@@ -46,23 +76,73 @@ public class MiniFileManager {
                 System.out.println(arrayArchivos[i].getName());
             }
         }
-
     }
+/**
+ * Este método crea una carpeta en la ruta Actual
+ * @param nombreCarpeta Es el nombre que le quieres poner a la carpeta nueva
+ * @throws Exception Lanzará una excepción si no se ha podido crear porque ya existe un directorio con ese nombre.
+ */
+    public void crearCarpeta(String nombreCarpeta) throws Exception {
 
-    public void crearCarpeta(String nombreCarpeta) {
+        carpetaNueva = new File(carpetaNueva, rutaActual + "\\" + nombreCarpeta);
 
-        carpetaNueva = new File(carpetaNueva + "/" + nombreCarpeta);
         if (carpetaNueva.mkdir()) {
             System.out.println("Directorio creado correctamente.");
         } else {
-            System.out.println("ERROR: No se pudo crear el el directorio.");
+            throw new Exception("ERROR: No se pudo crear el el directorio.");
+        }
+
+        carpetaNueva = null;
+    }
+    /**
+     * Método que se utiliza para borrar directorios en la ruta actual.
+     * @param nombreCarpeta Es el nombre de la carpeta que quieres eliminar
+     * @throws Exception Lanzará una excepción si no se ha podido eliminar la carpeta
+     */
+    public void borrarCarpeta(String nombreCarpeta) throws Exception {
+
+        carpetaNueva = new File(carpetaNueva, rutaActual + "\\" + nombreCarpeta);
+
+        File[] arrayArchivos = carpetaNueva.listFiles();
+
+        if (carpetaNueva.isDirectory()) {
+            for (int i = 0; i < arrayArchivos.length; i++) {
+                arrayArchivos[i].delete();
+            }
+            if (carpetaNueva.delete()) {
+                System.out.println("Directorio borrado correctamente.");
+            } else {
+                throw new Exception("ERROR: No se pudo borrar el el directorio.");
+            }
+        } else {
+            if (carpetaNueva.delete()) {
+                System.out.println("Directorio borrado correctamente.");
+            } else {
+                throw new Exception("ERROR: No se pudo borrar el el directorio.");
+            }
         }
     }
+    /**
+     * 
+     * @param file1
+     * @param file2
+     * @throws Exception 
+     */
+    public void moveDir(String file1, String file2) throws Exception {
+        File file = new File(file1);
+        File otroFile = new File(file2);
 
-    public void eliminarCarpeta(String nombreCarpeta) {
-
+        if (otroFile.exists()) {
+            throw new Exception("ERROR: Ya existe una carpeta con el mismo nombre.");
+        } else {
+         otroFile.delete();
+         file.mkdir();
+            System.out.println("Directorio movido correctamente.");
+        }
     }
-
+    /**
+     * Imprime por pantalla la descripción de los comandos.
+     */
     public void getHelp() {
         System.out.println("● pwd​ : Muestra cual es la carpeta actual.\n"
                 + "● cd <DIR>​: Cambia la carpeta actual a ‘DIR’. Con .. cambia a la carpeta superior.\n"
