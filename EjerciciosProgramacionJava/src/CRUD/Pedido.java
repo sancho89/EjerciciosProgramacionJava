@@ -7,7 +7,7 @@ package CRUD;
 
 /**
  *
- * @author a033564158m
+ * @author Carlos Sancho y Carlos Lázaro
  */
 public class Pedido {
     
@@ -16,15 +16,25 @@ public class Pedido {
     private String tipoGas;
     private String tipoBotella;
     private int cantidad;
-    private boolean estado;
+    private boolean isEntregado = false;
+    private int idPedido;
 
-    public Pedido(int idCliente, String fecha, String tipoGas, String tipoBotella, int cantidad, boolean estado) {
+    public Pedido(int idPedido, int idCliente, String fecha, String tipoGas, String tipoBotella, int cantidad) {
         this.idCliente = idCliente;
         this.fecha = fecha;
         this.tipoGas = tipoGas;
         this.tipoBotella = tipoBotella;
         this.cantidad = cantidad;
-        this.estado = estado;
+        this.isEntregado = isEntregado;
+        this.idPedido = idPedido;
+    }
+
+    public int getIdPedido() {
+        return idPedido;
+    }
+
+    public void setIdPedido(int idPedido) {
+        this.idPedido = idPedido;
     }
 
     public int getIdCliente() {
@@ -68,11 +78,11 @@ public class Pedido {
     }
 
     public boolean isEstado() {
-        return estado;
+        return isEntregado;
     }
 
     public void setEstado(boolean estado) {
-        this.estado = estado;
+        this.isEntregado = estado;
     }
     
 }

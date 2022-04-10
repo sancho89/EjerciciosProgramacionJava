@@ -7,10 +7,11 @@ package CRUD;
 
 /**
  *
- * @author a033564158m
+ * @author Carlos Sancho y Carlos Lázaro
  */
 public class Cliente {
     
+    private int idCliente;
     private String CIF;
     private String nombre;
     private String direccion;
@@ -25,6 +26,7 @@ public class Cliente {
         this.telefono = telefono;
         this.fechaAlta = fechaAlta;
         this.esPublico = esPublico;
+        this.idCliente = idCliente;
     }
 
     public String getCIF() {
@@ -73,6 +75,14 @@ public class Cliente {
 
     public void setEsPublico(char esPublico) {
         this.esPublico = esPublico;
+    }
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
     
 }
